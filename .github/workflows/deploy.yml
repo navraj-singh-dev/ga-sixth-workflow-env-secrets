@@ -9,7 +9,7 @@ env: # globally available to every job
   MONGODB_DB_NAME: ga-sixth-workflow-env-secrets-database
 
 jobs:
-  test:
+  test: # job 1
     env: # only available to use under this test job only
       MONGODB_CLUSTER_ADDRESS: cluster0.byc7jqy.mongodb.net
       MONGODB_USERNAME: navrajsinghdev
@@ -33,7 +33,7 @@ jobs:
         run: npm test
       - name: Output information
         run: echo "MongoDB Username:${{ env.MONGODB_USERNAME }}"
-  deploy:
+  deploy: # job 2
     needs: test
     runs-on: ubuntu-latest
     steps:
